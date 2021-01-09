@@ -10,7 +10,7 @@ use App\Infrastructure\TicketGate\TicketProviders\TestApi\Api\ResponseValidator;
 use GuzzleHttp\Client;
 use Illuminate\Support\ServiceProvider;
 
-class TestApiTicketGateProvider extends ServiceProvider
+class TestApiTicketGateServiceProvider extends ServiceProvider
 {
     public function register()
     {
