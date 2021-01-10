@@ -6,6 +6,7 @@ namespace App\Infrastructure\TicketGate\TicketProviders\TestApi\Api;
 
 use App\Infrastructure\TicketGate\TicketProviders\TestApi\Api\Commands\BaseCommand;
 use GuzzleHttp\Client;
+use Psr\Http\Message\ResponseInterface;
 
 class ApiClient
 {
@@ -20,7 +21,7 @@ class ApiClient
         $this->token = $token;
     }
 
-    public function sendCommandRequest(BaseCommand $command)
+    public function sendCommandRequest(BaseCommand $command): ResponseInterface
     {
         $method = $command->getMethod();
         $uri = $command->getPath();

@@ -23,8 +23,7 @@ class ApiClientTest extends TestCase
     {
         $command = $this->makeCommand();
 
-        $responseData = ['data'];
-        $response = $this->makeSuccessResponse($responseData);
+        $response = $this->makeSuccessResponse();
 
         $guzzleClient = $this->mockGuzzleClient($command, $response);
 

@@ -24,16 +24,6 @@ class ResponseValidatorTest extends TestCase
     }
 
     /** @test */
-    public function responseDataReturned(): void
-    {
-        $data = [14, 63];
-        $response = $this->makeSuccessResponse($data);
-
-        $result = $this->responseValidator->validateResponse($response);
-        $this->assertSame($data, $result);
-    }
-
-    /** @test */
     public function failedForResponseWithErrorMessage(): void
     {
         $errorMessageText = 'Bad response';

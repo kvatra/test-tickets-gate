@@ -12,6 +12,7 @@ use App\Infrastructure\TicketGate\TicketProviders\TestApi\Api\Commands\{
     GetShowsCommand,
     ReserveEventPlaceCommand
 };
+use Psr\Http\Message\ResponseInterface;
 
 class Provider implements TicketProvider
 {
@@ -22,13 +23,13 @@ class Provider implements TicketProvider
         $this->apiClient = $apiClient;
     }
 
-    public function getShows(): array
+    public function getShows(): ResponseInterface
     {
         return $this->apiClient
             ->sendCommandRequest(new GetShowsCommand());
     }
 
-    public function getShowEvents(int $showId): array
+    public function getShowEvents(int $showId): ResponseInterface
     {
         $command = new GetShowEventsCommand($showId);
 
@@ -36,7 +37,7 @@ class Provider implements TicketProvider
             ->sendCommandRequest($command);
     }
 
-    public function getEventPlaces(int $eventId): array
+    public function getEventPlaces(int $eventId): ResponseInterface
     {
         $command = new GetEventPlacesCommand($eventId);
 
@@ -44,7 +45,7 @@ class Provider implements TicketProvider
             ->sendCommandRequest($command);
     }
 
-    public function reservePlaces(int $eventId, string $customerName, array $places): array
+    public function reservePlaces(int $eventId, string $customerName, array $places): ResponseInterface
     {
         $command = new ReserveEventPlaceCommand($eventId, $customerName, $places);
 

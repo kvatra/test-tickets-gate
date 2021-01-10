@@ -8,20 +8,26 @@ use Psr\Http\Message\ResponseInterface;
 
 class ResponseValidator
 {
-    public function validateResponse(ResponseInterface $response): array
+    private ResponseDataRetriever $responseRetriever;
+
+    public function __construct(ResponseDataRetriever $responseRetriever)
+    {
+        $this->responseRetriever = $responseRetriever;
+    }
+
+    public function validateResponse(ResponseInterface $response): ResponseInterface
     {
         if (!$this->isSuccessStatusCode($response->getStatusCode())) {
             throw new TestApiException('Failed TestApi call');
         }
 
-        $content = $response->getBody()->getContents();
-        $decodedContent = json_decode($content, true);
+        $body = $this->responseRetriever->retrieve($response);
 
-        if ($error = $decodedContent['error'] ?? null) {
+        if ($error = $body['error'] ?? null) {
             throw new TestApiException($error);
         }
 
-        return $decodedContent['response'];
+        return $response;
     }
 
     private function isSuccessStatusCode(int $statusCode): bool

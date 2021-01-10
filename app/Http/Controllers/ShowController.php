@@ -4,26 +4,25 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Infrastructure\TicketGate\TicketProviders\TestApi\Provider;
+use App\Modules\Show\Queries\ShowEventsQuery;
+use App\Modules\Show\Queries\ShowListQuery;
 
 class ShowController extends Controller
 {
-    public function getList(Provider $provider)
+    public function getList(ShowListQuery $query)
     {
-        $shows = collect($provider->getShows())
-            ->keyBy('id')
-            ->map->name
-            ->toArray();
+        $shows = $query->fetch()
+            ->keyBy->getId()
+            ->map->getName();
 
         return view('shows', compact('shows'));
     }
 
-    public function getShow(int $showId, Provider $provider)
+    public function getShowEvents(int $showId, ShowEventsQuery $query)
     {
-        $events = collect($provider->getShowEvents($showId))
-            ->keyBy('id')
-            ->map->date
-            ->toArray();
+        $events = $query->fetch($showId)
+            ->keyBy->getId()
+            ->map->getDate();
 
         return view('show', compact('events'));
     }

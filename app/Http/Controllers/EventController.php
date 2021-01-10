@@ -5,25 +5,26 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ReservePlacesRequest;
-use App\Infrastructure\TicketGate\TicketProviders\TestApi\Provider;
+use App\Modules\ShowEvents\Commands\ReserveEventPlaces;
+use App\Modules\ShowEvents\Queries\EventPlacesQuery;
 
 class EventController extends Controller
 {
-    public function getPlaces(int $eventId, Provider $provider)
+    public function getPlaces(int $eventId, EventPlacesQuery $query)
     {
-        $places = collect($provider->getEventPlaces($eventId))
-            ->keyBy('id')
-            ->toArray();
+        $places = $query->fetch($eventId)
+            ->keyBy->getId()
+            ->map->getParams();
 
         return view('event_places', compact('places'));
     }
 
-    public function reservePlaces(int $eventId, ReservePlacesRequest $request, Provider $provider)
+    public function reservePlaces(int $eventId, ReservePlacesRequest $request)
     {
         $params = $request->validated();
+        $command = new ReserveEventPlaces($eventId, $params['customer_name'], $params['places']);
+        $reservationId = $this->dispatchNow($command);
 
-        $result = $provider->reservePlaces($eventId, $params['customer_name'], $params['places']);
-
-        return response()->json(compact('result'));
+        return response()->json(['id' => $reservationId]);
     }
 }

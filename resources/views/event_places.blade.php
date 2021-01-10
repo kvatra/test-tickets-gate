@@ -16,7 +16,7 @@
           customer_name: customerName,
           places: selected,
         }).then((response) => {
-          const reservationId = response.data.result.reservation_id;
+          const reservationId = response.data.id;
 
           $('#success-alert')
             .prepend(`<span> Order created successfully. Reservation ID: </span> <strong> ${reservationId} </strong>`)

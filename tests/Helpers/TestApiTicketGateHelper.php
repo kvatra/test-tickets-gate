@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface;
 
 trait TestApiTicketGateHelper
 {
-    private function makeSuccessResponse(array $data): ResponseInterface
+    private function makeSuccessResponse(array $data = ['data']): ResponseInterface
     {
         $responseData = json_encode(['response' => $data]);
 

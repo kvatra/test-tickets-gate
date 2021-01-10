@@ -7,7 +7,7 @@ Route::get('/', 'ShowController@getList');
 Route::prefix('/shows')
     ->group(function () {
         Route::get('/', 'ShowController@getList');
-        Route::get('/{showId}', 'ShowController@getShow');
+        Route::get('/{showId}', 'ShowController@getShowEvents');
     });
 
 Route::prefix('/events')
