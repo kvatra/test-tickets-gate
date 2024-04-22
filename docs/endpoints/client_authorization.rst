@@ -24,7 +24,7 @@ Response
 .. rubric:: Response class
 .. code-block:: php
 
-    Affiliateforge\PhpAdmitadApi\Api\Endpoints\ClientAuthorization\GetToken\GetTokenResponse
+    Affiliateforge\PhpAdmitadApi\Api\Endpoints\ClientAuthorization\GetTokenResponse
 
 .. rubric:: Description
 
