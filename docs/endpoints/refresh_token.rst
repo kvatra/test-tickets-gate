@@ -1,14 +1,15 @@
 .. _refresh_token:
 
-.. toctree::
-    :maxdepth: 1
-
 Access Token Refresh
 ####################
 
-.. rubric:: Admitad documentation reference:
+.. note::
+    Unlike other routes, the endpoint for refreshing the authorization token is located in the same namespace as receiving the authorization token.
 
-https://developers.admitad.com/hc/en-us/articles/7930242014353-Access-token-refresh
+.. note::
+    .. rubric:: Admitad documentation reference:
+
+    https://developers.admitad.com/hc/en-us/articles/7930242014353-Access-token-refresh
 
 Command
 *******

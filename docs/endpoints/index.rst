@@ -31,6 +31,9 @@ on the Command class, passing the HttpResponse to the constructor.
 All response DTOs are inheritors of the ``Affiliateforge\PhpAdmitadApi\Api\ResponseDTO`` class and have function ``getOriginalResponse``
 to get the original HTTP response.
 
+Many endpoints have meta information in their response. For such endpoints, the response will have the `getMeta` method,
+which returns an DTO with getters for all fields
+
 
 HTTP/API Errors
 ===============

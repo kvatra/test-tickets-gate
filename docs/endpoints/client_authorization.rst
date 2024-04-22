@@ -1,17 +1,15 @@
 .. _client_authorization:
 
-.. toctree::
-    :maxdepth: 1
-
 Client Authorization
 ####################
 
-.. rubric:: Admitad documentation reference:
+.. note::
+    .. rubric:: Admitad documentation reference:
 
-https://developers.admitad.com/hc/en-us/articles/7930256407825-Client-authorization
+    https://developers.admitad.com/hc/en-us/articles/7930256407825-Client-authorization
 
 Command
-*******
+^^^^^^^
 .. rubric:: Class
 .. code-block:: php
 
@@ -22,7 +20,7 @@ Command
 DTO accepts in the constructor the clientID and the requested scopes as an array
 
 Response
-********
+^^^^^^^^
 .. rubric:: Response class
 .. code-block:: php
 
