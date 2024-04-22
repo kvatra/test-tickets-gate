@@ -16,3 +16,5 @@ yarn-error.log
 /public/mix-manifest.json
 /public/css/
 /public/js/
+/docs/_build
+/docs/endpoints/temaplate.rst
