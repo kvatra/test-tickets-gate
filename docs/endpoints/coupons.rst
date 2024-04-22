@@ -1,0 +1,4 @@
+.. _coupons:
+
+Coupons
+#########
